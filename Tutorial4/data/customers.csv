@@ -1,0 +1,13 @@
+customer_id,age,income_k,tenure_months,region,channel_pref,feature_segment,social_circle
+C01,24,39,8,coast,store,budget,north_circle
+C02,27,43,10,city,store,budget,north_circle
+C03,25,41,7,suburb,store,budget,south_circle
+C04,29,46,11,coast,web,budget,south_circle
+C05,34,108,22,city,app,premium,north_circle
+C06,37,115,27,suburb,app,premium,north_circle
+C07,35,111,24,coast,app,premium,south_circle
+C08,39,121,29,city,web,premium,south_circle
+C09,43,76,40,suburb,web,family,north_circle
+C10,46,83,45,coast,web,family,north_circle
+C11,44,79,41,city,store,family,south_circle
+C12,48,86,47,suburb,web,family,south_circle

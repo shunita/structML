@@ -1,0 +1,37 @@
+Customer DR example summary
+===========================
+
+Design intent:
+- Truncated SVD should group customers by purchase behavior.
+- Laplacian Eigenmaps should group customers by interaction-circle structure.
+
+Customer labels:
+customer_id feature_segment social_circle
+        C01          budget  north_circle
+        C02          budget  north_circle
+        C03          budget  south_circle
+        C04          budget  south_circle
+        C05         premium  north_circle
+        C06         premium  north_circle
+        C07         premium  south_circle
+        C08         premium  south_circle
+        C09          family  north_circle
+        C10          family  north_circle
+        C11          family  south_circle
+        C12          family  south_circle
+
+Top-2 singular-value energy ratio: 0.9935
+Individual SVD energy ratios: 0.5872, 0.4063
+Smallest Laplacian eigenvalues:
+0.0000, 0.4364, 2.2857, 2.7447, 3.0000, 3.4819
+Graph edges: 22
+Graph connected: yes
+
+Separation checks (higher is better):
+- SVD grouped by feature_segment: 22.6347
+- SVD grouped by social_circle:  0.0566
+- Laplacian grouped by social_circle:  2.1160
+- Laplacian grouped by feature_segment: 0.1572
+
+Validation: PASS
+The example separates the intended notion of similarity in each method.

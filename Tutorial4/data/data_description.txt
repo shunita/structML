@@ -1,0 +1,81 @@
+Agent-facing note for the synthetic customer dimensionality-reduction example
+
+Use this file first when you need to understand or modify the example.
+The goal of the example is not realism for its own sake; the goal is to produce a small dataset whose structure is easy to explain on slides and whose two low-dimensional views are deliberately different.
+
+Files
+- customers.csv: one row per customer.
+- transactions.csv: six purchase rows per customer; used to derive the feature matrix.
+- interactions.csv: customer-customer interaction links; used to build the graph for Laplacian Eigenmaps.
+- customer_feature_matrix.csv: aggregated numeric matrix X used for truncated SVD.
+
+Why this data was designed this way
+- The same 12 customers are used in both methods so the comparison is about the method, not about changing datasets.
+- The feature matrix X was designed to emphasize three behavior groups:
+  budget, premium, family.
+- The interaction graph was designed to emphasize two network communities:
+  north_circle, south_circle.
+- This mismatch is intentional.
+  Truncated SVD should mainly recover the behavior groups because it only sees X.
+  Laplacian Eigenmaps should mainly recover the network communities because it only sees the graph.
+- The example is deliberately small enough to fit into one or two setup slides:
+  12 customers, 72 transactions, and 22 interaction links.
+
+Important columns in customers.csv
+- customer_id:
+  Stable customer identifier.
+- age:
+  Customer age in years.
+- income_k:
+  Approximate annual income in thousands.
+- tenure_months:
+  Number of months since the customer joined the business or loyalty program.
+- region:
+  Coarse geographic area of the customer: coast, city, or suburb.
+  It is part of the raw relational dataset, but it is not used in the final SVD matrix so that the example stays small.
+- channel_pref:
+  Preferred shopping channel: store, web, or app.
+  It indicates how the customer usually shops; it is kept in the raw table for interpretation.
+- feature_segment:
+  Synthetic behavior label used to generate purchase patterns.
+  budget customers spend less and buy mostly groceries, premium customers spend more and buy more electronics/fashion, family customers concentrate on groceries/home.
+  This is used only to color or interpret plots and to validate the SVD example; it is not given to either dimensionality-reduction method.
+- social_circle:
+  Synthetic community label used to generate the interaction graph.
+  north_circle and south_circle indicate which part of the customer network the customer belongs to.
+  This is used only for interpretation, plot coloring, and validation; it is not part of X.
+
+Important columns in transactions.csv
+- month:
+  Small time index used only to create repeated purchases for each customer.
+- category:
+  Purchase category: electronics, fashion, groceries, or home.
+- amount:
+  Transaction amount.
+
+Important columns in customer_feature_matrix.csv
+- total_spend:
+  Sum of transaction amounts for the customer.
+- avg_transaction:
+  Mean transaction amount for the customer.
+- spend_electronics / spend_fashion / spend_groceries / spend_home:
+  Total spend of the customer in each purchase category.
+
+How the example demonstrates the two methods
+- Truncated SVD input:
+  customer_feature_matrix.csv
+  The main signal is behavioral similarity in the engineered numeric features.
+- Laplacian Eigenmaps input:
+  interactions.csv transformed into an adjacency matrix A and Laplacian L = D - A.
+  The main signal is local neighborhood structure in the customer graph.
+- Expected teaching outcome:
+  SVD groups customers that buy similarly, even if they are in different social circles.
+  Laplacian Eigenmaps groups customers that are connected in the graph, even if they have different purchase behavior.
+- The difference between the two outputs is therefore the core lesson:
+  each method preserves a different notion of proximity.
+
+What a coding agent should preserve if modifying the example
+- Keep the example small.
+- Keep the feature-group signal strong enough that SVD separates the three feature segments.
+- Keep the graph-community signal strong enough that Laplacian Eigenmaps separates the two social circles.
+- Avoid adding extra columns or graph complexity unless they support a specific slide.

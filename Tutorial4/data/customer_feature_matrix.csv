@@ -1,0 +1,13 @@
+customer_id,feature_segment,social_circle,age,income_k,tenure_months,total_spend,avg_transaction,spend_electronics,spend_fashion,spend_groceries,spend_home
+C01,budget,north_circle,24,39,8,252,42.0,34,32,146,40
+C02,budget,north_circle,27,43,10,276,46.0,38,36,158,44
+C03,budget,south_circle,25,41,7,228,38.0,30,28,134,36
+C04,budget,south_circle,29,46,11,252,42.0,34,32,146,40
+C05,premium,north_circle,34,108,22,1068,178.0,634,331,0,103
+C06,premium,north_circle,37,115,27,1020,170.0,610,315,0,95
+C07,premium,south_circle,35,111,24,1044,174.0,622,323,0,99
+C08,premium,south_circle,39,121,29,1068,178.0,634,331,0,103
+C09,family,north_circle,43,76,40,595,99.16666666666667,70,0,345,180
+C10,family,north_circle,46,83,45,619,103.16666666666667,74,0,357,188
+C11,family,south_circle,44,79,41,643,107.16666666666667,78,0,369,196
+C12,family,south_circle,48,86,47,595,99.16666666666667,70,0,345,180
